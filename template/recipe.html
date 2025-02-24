@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.name }}</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #f9f9f9, #e3e3e3);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header and Footer Styling */
+        header, footer {
+            width: 100%;
+            background: #333;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav {
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Recipe Card Styling */
+        .recipe-container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            margin: 20px 0;
+        }
+
+        .recipe-container:hover {
+            transform: scale(1.02);
+        }
+
+        .recipe-container img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 26px;
+            margin-top: 15px;
+            color: #333;
+        }
+
+        .rating {
+            font-size: 18px;
+            color: #ffcc00;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Ingredients Section */
+        .ingredients {
+            text-align: left;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .ingredients h2 {
+            font-size: 20px;
+            color: #555;
+            border-bottom: 2px solid #ffcc00;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .ingredients ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .ingredients ul li {
+            background: #f8f8f8;
+            margin: 5px 0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ingredients ul li::before {
+            content: "🍽";
+            font-size: 16px;
+        }
+
+        /* Button Styling */
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #ff4040;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#recipes">Recipes</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="recipe-container">
+        <img src="{{ recipe.image }}" alt="{{ recipe.name }}">
+        <h1>{{ recipe.name }}</h1>
+        <div class="rating">⭐ {{ recipe.rating }} / 5 ({{ recipe.reviewCount }} reviews)</div>
+        
+        <div class="ingredients">
+            <h2>Ingredients:</h2>
+            <ul>
+                {% for ingredient in recipe.ingredients %}
+                    <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="{% url 'recipes' %}" class="back-button">⬅ Back to Recipes</a>
+    </div>
+
+    <footer>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+        </nav>
+    </footer>
+</body>
+</html>

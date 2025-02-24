@@ -1,0 +1,9 @@
+{% if dig >= 0 and 9 >= dig %}
+<h1>The given digit {{dig}} is one digit</h1>
+{% elif dig >= 10 and 99 >= dig %}
+<h1>The given digit {{dig}} is two digit</h1>
+{% elif dig >= 100 and 999 >= dig %}   
+<h1>The given digit {{dig}} is three digit</h1>
+{% else %}
+<h1> the given is {{dig}} more than three</h1>
+{% endif %}

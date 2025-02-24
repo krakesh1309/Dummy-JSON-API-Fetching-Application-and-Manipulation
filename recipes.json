@@ -1230,13 +1230,13 @@
           "Brazilian",
           "Cocktail"
         ],
-        "userId": 134,
-        "image": "https://cdn.dummyjson.com/recipe-images/30.webp",
-        "rating": 4.4,
-        "reviewCount": 55,
-        "mealType": [
-          "Beverage"
-        ]
-      }
+      "userId": 134,
+            "image": "https://cdn.dummyjson.com/recipe-images/30.webp",
+            "rating": 4.4,
+            "reviewCount": 55,
+            "mealType": [
+                "Beverage"
+            ]
+        }
     ]
-  }
+}

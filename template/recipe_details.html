@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ recipe.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="container">
+        <h1>{{ recipe.name }}</h1>
+        <img src="{{ recipe.image }}" alt="{{ recipe.name }}" style="width: 100%; height: auto;">
+        <h2>ingredients</h2>
+        <p>{{ recipe.ingredients }}</p>
+        <h2>Ingredients</h2>
+        <ul>
+            {% for ingredient in recipe.ingredients %}
+            <li>{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+    </div> -->
+
+    <img src="{{recipe.image}}" alt="">
+    <p>{{recipe.ingredients}}</p>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

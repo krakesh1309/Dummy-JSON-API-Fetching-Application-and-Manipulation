@@ -1,117 +1,50 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Recipes</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <style>
-        /* General Page Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to right, #f9f9f9, #e3e3e3);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* Header and Footer Styling */
-        header, footer {
-            width: 100%;
-            background: #333;
-            color: #fff;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        nav {
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        /* Grid Container Styling */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 20px;
-            padding: 20px;
-            flex-grow: 1;
         }
-
         .grid-item {
-            background-color: #f1f1f1;
-            padding: 20px;
-            text-align: center;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
         }
-
-        img {
-            height: 200px;
-            width: 200px;
+        .grid-item img {
+            width: 100%;
+            height: auto;
         }
-
-        .rating-count {
-            font-size: 16px;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-
-        .rating {
-            font-weight: bold;
-            color: #ff6f61;
-            margin-right: 5px;
-        }
-
-        .count {
-            color: #007bff;
+        .grid-item h3 {
+            font-size: 1.2rem;
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#recipes">Recipes</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <div class="grid-container">
-        {% for recipe in recipes %}
+    <div class="container">
+        <div class="grid-container">
+            {% for recipe in recipes %}
             <div class="grid-item">
-                <img src="{{ recipe.image }}" alt="">
-                <a href="{% url 'recipe' forloop.counter %}">
-                    {{ recipe.name }}
+                <a href="{% url 'recipe_detail_view' recipe.id %}">
+                    <img src="{{ recipe.image }}" alt="{{ recipe.name }}">
                 </a>
-                <div class="rating-count">
-                    <span class="rating">Rating: {{ recipe.rating }}</span>
-                    <span class="count">Review: ({{ recipe.reviewCount }})</span>
-                </div>
+                <h3>{{ recipe.name }}</h3>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 
-    <footer>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#privacy">Privacy</a>
-            <a href="#terms">Terms</a>
-        </nav>
-    </footer>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

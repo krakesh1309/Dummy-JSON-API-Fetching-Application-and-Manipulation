@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Grid</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .grid-item {
+            background-color: #ffffff;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item img {
+            height: 150px;
+            width: 150px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .grid-item h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #343a40;
+        }
+        .grid-item p {
+            font-size: 1em;
+            color: #28a745;
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'}">
+</head>
+<body>
+    <div class="grid-container">
+        {% for product in products %}
+        <div class="grid-item">
+            <img src="{{product.images.0}}" alt="">
+            <h3>{{product.title}}</h3>
+            <p>₹{{product.price}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
